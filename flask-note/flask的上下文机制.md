@@ -30,9 +30,9 @@ def wsgi_app(self, environ, start_response):
              ctx.push()                  #3.2
      ...
 ```
-3.1 ctx = self.request_context(environ)封装请求相关
-    --> request_context里面将其再封装一层RequestContext(self, environ)
-    --> RequestContext里面含有request和session等:
+3.1 ctx = self.request_context(environ)封装请求相关  
+    --> request_context里面将其再封装一层RequestContext(self, environ)  
+    --> RequestContext里面含有request和session等:  
  ```
         def __init__(self, app, environ, request=None):
             self.app = app
@@ -43,9 +43,9 @@ def wsgi_app(self, environ, start_response):
             self.flashes = None
             self.session = None
   ```
-3.2 ctx.push(),将ctx压入栈中:
-      -->_request_ctx_stack.push(self) #_request_ctx_stack是LocalStack对象
-      Localstack:
+3.2 ctx.push(),将ctx压入栈中:  
+      -->_request_ctx_stack.push(self) #_request_ctx_stack是LocalStack对象  
+      Localstack:  
 ```
       def __init__(self):
         self._local = Local() #这个local对象是flask实现的可以区分线程和协程的对象
