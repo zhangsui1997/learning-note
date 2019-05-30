@@ -45,7 +45,7 @@ def wsgi_app(self, environ, start_response):
   ```
 3.2 ctx.push(),将ctx压入栈中:  
       -->_request_ctx_stack.push(self) #_request_ctx_stack是LocalStack对象  
-      Localstack:  
+      Localstack:  具体可见[flask如何区分不同的请求?](https://github.com/zhangsui1997/learning-note/blob/master/flask-note/request%E5%A6%82%E4%BD%95%E5%8C%BA%E5%88%86%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%B7%E6%B1%82%EF%BC%9F.md)
 ```
       def __init__(self):
         self._local = Local() #这个local对象是flask实现的可以区分线程和协程的对象
