@@ -18,9 +18,10 @@ flask为了同时支持多线程和协程编写了自己的local类
 
 ## flask的上下文管理机制
 ### 启动app 请求到来时
-1.app.run() --> werkzug.runsimple(host,port,self,** options)会执行self() 
+1.app.run() --> werkzug.runsimple(host,port,self,** options)会执行self()    
 即执行Flask的__call__方法  
-2.__ call__ --> self.wsgi_app(environ,start_reponse)  
+
+2.__ call__ --> self.wsgi_app(environ,start_reponse)    
 ```
 def wsgi_app(self, environ, start_response):
     ctx = self.request_context(environ)  #3.1
