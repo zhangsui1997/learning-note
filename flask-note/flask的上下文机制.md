@@ -50,6 +50,28 @@ def wsgi_app(self, environ, start_response):
       def __init__(self):
         self._local = Local() #这个local对象是flask实现的可以区分线程和协程的对象
 ```
+4. 执行视图函数时  
+   导入request :  
+   ```
+   request = LocalProxy(partial(_lookup_req_object, 'request')) #偏函数
+   ```
+   _lookup_req_object:  
+   ```
+   def _lookup_req_object(name):
+       top = _request_ctx_stack.top  #return self._local.stack[-1]返回栈最后一个,是一个RequestContext对象
+       if top is None:
+           raise RuntimeError(_request_ctx_err_msg)
+       return getattr(top, name)
+   ```
+   执行request.mehtod时候即是执行request.getattr即是：  
+   LocalProxy的__getattr__方法: 最后return：    
+   ```
+   return getattr(self.__local, self.__name__) #这个local就是flask自己实现的
+   ```
+5.请求结束:  
+ctx.auto_pop()  
+将ctx从local中删除  
+   
 
 
 
