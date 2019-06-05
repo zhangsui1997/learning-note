@@ -7,7 +7,7 @@ async def get_url(number):
     return number
 
 def callback(number,future):
-    print("success {} ".format(number))
+    print("success {0}  {1} ".format(number,future.result()))
 
 
 if __name__ == "__main__":
