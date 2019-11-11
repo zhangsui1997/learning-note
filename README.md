@@ -1,2 +1,2 @@
 # learning-note
-  Record somethings about learning.
+  杂的记
