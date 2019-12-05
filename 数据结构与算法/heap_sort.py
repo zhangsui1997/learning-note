@@ -16,6 +16,7 @@ def heap_sort(arr):
 
 
 def heap_insert(arr, index):
+    # (index-1)//2就是该节点的父节点
     while arr[index] > arr[(index - 1) // 2] and index > 0 and ((index - 1) // 2) > 0:
         arr[index], arr[(index - 1) // 2] = arr[(index - 1) // 2], arr[index]
         index = (index - 1) // 2
@@ -36,6 +37,6 @@ def heap_helper(arr, index, size):
         left = 2 * index + 1
 
 
-arr = [10, 7, 1, 8, 9, 5, 0, 0, 1]
+arr = [10, 7, 7, 7, 7, 7, 7, 1, 8, 9, 5, 0, 0, 1]
 heap_sort(arr)
 print(arr)
