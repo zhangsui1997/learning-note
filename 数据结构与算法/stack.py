@@ -1,36 +1,36 @@
 # 实现栈 并实现get_min()返回最小值,时间复杂度O(1)
-class my_queue(object):
+class MyStack(object):
     def __init__(self, size):
         self.size = size
-        self.queue = [] # 栈
-        self.min_queue = [] # 最小栈
+        self.stack = []  # 栈
+        self.min_stack = []  # 最小栈
 
     def push(self, value):
-        if len(self.queue) == self.size:
+        if len(self.stack) == self.size:
             raise IndexError
-        self.queue.append(value)
+        self.stack.append(value)
 
         # 入栈时 如果小于等于小栈最后一个元素就也入最小栈
-        if not self.min_queue:
-            self.min_queue.append(value)
-        elif self.min_queue[-1] >= value:
-            self.min_queue.append(value)
+        if not self.min_stack:
+            self.min_stack.append(value)
+        elif self.min_stack[-1] >= value:
+            self.min_stack.append(value)
 
     def pop(self):
-        value = self.queue.pop(-1)
-        if value == self.min_queue[0]:
-            self.min_queue.pop(-1)
+        value = self.stack.pop(-1)
+        if value == self.min_stack[0]:
+            self.min_stack.pop(-1)
         return value
 
     def get_min(self):
-        return self.min_queue[-1]
+        return self.min_stack[-1]
+
+    def __str__(self):
+        return str(self.stack)
 
 
-q = my_queue(5)
+q = MyStack(5)
 for i in range(4):
     q.push(i)
 q.push(0)
-print(q.queue, q.min_queue)
-q.pop()
-print(q.queue)
-print(q.get_min())
+print(q)
