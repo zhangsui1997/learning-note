@@ -23,3 +23,4 @@ class RandomHash(object):
 
     def delete(self, key):
         # 删除 替代 index-1
+        pass
