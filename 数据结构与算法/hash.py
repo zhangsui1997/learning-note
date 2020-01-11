@@ -19,7 +19,7 @@ class RandomHash(object):
 
     def get_random(self):
         import random
-        return self.reverse_random[random.randrange(1,self.index+1)]
+        return self.reverse_random[random.randrange(1, self.index + 1)]
 
     def delete(self, key):
         # 删除 替代 index-1
